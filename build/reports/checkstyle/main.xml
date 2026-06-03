@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="10.26.1">
+<file name="/Users/will/Projects/attack_counter/attackcounter/src/main/java/com/attackcounter/AttackCounterOverlay.java">
+</file>
+<file name="/Users/will/Projects/attack_counter/attackcounter/src/main/java/com/attackcounter/AttackCounterPlugin.java">
+</file>
+<file name="/Users/will/Projects/attack_counter/attackcounter/src/main/java/com/attackcounter/AttackCounterConfig.java">
+</file>
+</checkstyle>

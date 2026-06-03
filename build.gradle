@@ -1,0 +1,54 @@
+plugins {
+	id 'java'
+	id 'checkstyle'
+}
+
+checkstyle {
+	toolVersion = "10.26.1"
+}
+
+repositories {
+	maven {
+		url = 'https://repo.runelite.net'
+	}
+	mavenCentral()
+}
+
+def runeLiteVersion = 'latest.release'
+
+dependencies {
+	compileOnly group: 'net.runelite', name:'client', version: runeLiteVersion
+
+	compileOnly 'org.projectlombok:lombok:1.18.30'
+	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+	runtimeOnly group: 'net.runelite', name: 'client', version: runeLiteVersion
+}
+
+java {
+	targetCompatibility = "1.11"
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(11)
+	}
+}
+
+def props = new Properties()
+file('runelite-plugin.properties').withInputStream { props.load(it) }
+
+group = 'com.attackcounter'
+version = props.getProperty('version')
+
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
+	options.release.set(11)
+}
+
+tasks.register('runClient', JavaExec) {
+	classpath = sourceSets.main.runtimeClasspath
+	mainClass = 'net.runelite.client.RuneLite'
+	args '--developer-mode'
+	jvmArgs '-ea'
+	javaLauncher = javaToolchains.launcherFor {
+		languageVersion = JavaLanguageVersion.of(11)
+	}
+}
