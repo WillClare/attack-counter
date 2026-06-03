@@ -20,8 +20,7 @@ import net.runelite.client.ui.overlay.OverlayManager;
 
 @PluginDescriptor(
 	name = "Attack Counter",
-	description = "Displays a pip overlay tracking attacks in a configurable cycle",
-	enabledByDefault = false
+	description = "Displays a pip overlay tracking attacks in a configurable cycle"
 )
 public class AttackCounterPlugin extends Plugin
 {
